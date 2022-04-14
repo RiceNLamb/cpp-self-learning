@@ -19,9 +19,14 @@ int main(){
         dupe_checker = duplicate_checker(first_card.chosen_value , second_card.chosen_value, first_card.chosen_suit, second_card.chosen_suit);
     }
     
+    
     int fcard_value{first_card.output_value};
     int scard_value{second_card.output_value};
+    first_card.ace_flipper(scard_value);
+    second_card.ace_flipper(fcard_value);
 
+    fcard_value = {first_card.output_value}; // I could reference the variable location but im not too sure how that works yet, so im better off remaking it
+    scard_value = {second_card.output_value};
     
     int starting_total {fcard_value + scard_value};
     vector<string> initial_cards{start_sequence(first_card.card_structure,second_card.card_structure)};

@@ -10,7 +10,7 @@ class CardObject {
             "C", "S", "H", "D" 
             };
         string values[13] {
-            "1", "2", "3", "4","5", "6", "7", "8", "9", "10", "J","Q","K" 
+            "A", "2", "3", "4","5", "6", "7", "8", "9", "10", "J","Q","K" 
         };
         int suits_converter(string value){
             if (value == "J")
@@ -19,6 +19,8 @@ class CardObject {
                 return 10;
             else if (value == "K")
                 return 10;
+            else if (value == "A")
+                return 11;
             else{
                 int calculated_value {stoi(value)};
                 return calculated_value;
@@ -57,6 +59,11 @@ class CardObject {
             
             output_value = suits_converter(chosen_value);
         }
+        void ace_flipper(int other_number){
+            int checker {other_number + output_value};
+            if (chosen_value == "A" and checker > 21)
+                output_value = 1;
+        }
 
 };
 
@@ -89,7 +96,7 @@ vector<string> card_printer(vector<string> board_state, string card_output[7][7]
 
 void game_sequence(int prev_total,  vector<string> board){
     if (prev_total < 21){
-        cout << "Hit or continue? ";
+        cout << "Hit or stand? ";
         string order{};
         cin >> order;
         if (order == "hit" or order== "Hit"){
@@ -98,17 +105,18 @@ void game_sequence(int prev_total,  vector<string> board){
             
             vector<string> newboard{card_printer(board, newCard.card_structure)};
 
+            newCard.ace_flipper(prev_total);
+
             int new_total = prev_total + newCard.output_value;
-            
             game_sequence(new_total, newboard);
         }
         else{
-            cout << "Your current total is: " << prev_total << "\n\n\n\n";
+            cout << "Your current total is: " << prev_total;
         }
         
     }
     else if (prev_total == 21){
-        cout << "BlackJack!";
+        cout << "Blackjack!";
     }
     else{
         cout << "Bust!";
