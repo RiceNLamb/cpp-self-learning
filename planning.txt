@@ -1,4 +1,0 @@
-Class 1 --> card
-class 2 --> hand (the card board is a hand)
-	if i wanna continue with balckjack, I should properly implement a card hand and use that to calculate the values rather than generating them out of the cards class. 
-class 3--> card cvombinations
