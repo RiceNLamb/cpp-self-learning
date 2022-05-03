@@ -31,7 +31,6 @@ class CardObject {
     public:
         string chosen_suit {""};
         string chosen_value {""};
-        int output_value{0};
         string card_structure[7][7] {
             {"-","-","-","-","-","-","-"},
             {"|"," "," "," "," "," ","|"},
@@ -57,17 +56,14 @@ class CardObject {
             card_structure[5][5] = chosen_suit;
             card_structure[3][3] = chosen_value;
             
-            output_value = suits_converter(chosen_value);
-        }
-        void ace_flipper(int other_number){
-            int checker {other_number + output_value};
-            if (chosen_value == "A" and checker > 21)
-                output_value = 1;
         }
 
 };
 
 
+class Hand : public CardObject {
+
+};
 
 vector<string> card_printer(vector<string> board_state, string card_output[7][7]){
     
@@ -105,10 +101,8 @@ void game_sequence(int prev_total,  vector<string> board){
             
             vector<string> newboard{card_printer(board, newCard.card_structure)};
 
-            newCard.ace_flipper(prev_total);
 
-            int new_total = prev_total + newCard.output_value;
-            game_sequence(new_total, newboard);
+            //game_sequence(new_total, newboard);
         }
         else{
             cout << "Your current total is: " << prev_total;
