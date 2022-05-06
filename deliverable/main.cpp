@@ -22,7 +22,7 @@ int main(){
     
 
     
-    vector<string> initial_cards{start_sequence(first_card.card_structure,second_card.card_structure)};
+    // vector<string> initial_cards{start_sequence(first_card.card_structure,second_card.card_structure)};
 
     //game_sequence(starting_total, initial_cards);
 
