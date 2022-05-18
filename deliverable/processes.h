@@ -64,6 +64,7 @@ class CardObject {
 
 class Hand{
     private:
+        //vector<string> current_hand{};
     
     public:
         //takes in the current boardstate, and then the generated card, then returns the new board state 
@@ -74,10 +75,11 @@ class Hand{
             string temp_str_concat = "";
 
             for (int line{0}; line <7; ++line){
-                temp_str_concat = temp_str_concat +  board_state[line];
+                temp_str_concat = temp_str_concat + board_state[line];
 
                 temp_str_concat = temp_str_concat + "    ";
 
+                // adds each space in each line 
                 for(int i{0}; i<7; ++i){
                     temp_str_concat = temp_str_concat + card_output[line][i];
                 }
@@ -97,9 +99,12 @@ class Hand{
         vector<string> board_state{};
         string temp_str_concat = "";
         
+
+        //printing cards as well as adding them to larger vector 
         for (int i {0}; i< 7; ++i) {
+            //printing the cards one by one 
             for (int j{0}; j<7; ++j) {
-                temp_str_concat = temp_str_concat +  card1[i][j];
+                temp_str_concat = temp_str_concat + card1[i][j];
                 cout << card1[i][j];
             }
             
