@@ -64,18 +64,17 @@ class CardObject {
 
 class Hand{
     private:
-        //vector<string> current_hand{};
+        vector<string> current_hand{"","","","","","",""};
     
     public:
         //takes in the current boardstate, and then the generated card, then returns the new board state 
         // boards state will now be the hand
-        vector<string> hand_printer(vector<string> board_state, string card_output[7][7]){
+        void hand_maker(string card_output[7][7]){
     
-            vector<string> new_board_state{};
             string temp_str_concat = "";
 
             for (int line{0}; line <7; ++line){
-                temp_str_concat = temp_str_concat + board_state[line];
+                temp_str_concat = temp_str_concat + current_hand[line];
 
                 temp_str_concat = temp_str_concat + "    ";
 
@@ -83,46 +82,21 @@ class Hand{
                 for(int i{0}; i<7; ++i){
                     temp_str_concat = temp_str_concat + card_output[line][i];
                 }
-                    
-                temp_str_concat = temp_str_concat;
-                cout << temp_str_concat << "\n";
-                new_board_state.push_back(temp_str_concat);
+
+                //adds in the line    
+                current_hand[line] = temp_str_concat;
                 temp_str_concat = "";
                 
                 }
 
-            return new_board_state;
         }
 
-    vector<string> start_sequence(string card1[7][7], string card2[7][7]){
-    
-        vector<string> board_state{};
-        string temp_str_concat = "";
-        
+        void hand_printer(){
+            for (int i{0}; i < 7; ++i){
+                std::cout << current_hand[i] << "\n";
 
-        //printing cards as well as adding them to larger vector 
-        for (int i {0}; i< 7; ++i) {
-            //printing the cards one by one 
-            for (int j{0}; j<7; ++j) {
-                temp_str_concat = temp_str_concat + card1[i][j];
-                cout << card1[i][j];
             }
-            
-            cout << "    ";
-            temp_str_concat = temp_str_concat + "    ";
-            for (int k{0}; k<7; ++k) {
-                temp_str_concat = temp_str_concat +card2[i][k];
-                cout << card2[i][k];
-            }
-            cout << "\n";
-            
-            board_state.push_back(temp_str_concat);
-            temp_str_concat = "";
         }
-        
-
-        return board_state;
-    }
 };
 
     
