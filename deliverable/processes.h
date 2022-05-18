@@ -2,7 +2,10 @@
 #include <string>
 #include <random>
 #include <chrono>
+#include <tuple> 
 using namespace std;
+
+
 
 class CardObject {
     private:
@@ -29,8 +32,12 @@ class CardObject {
             return 0;
 }
     public:
+        string values[13] {
+            "A", "2", "3", "4","5", "6", "7", "8", "9", "10", "J","Q","K" 
+        };
         string chosen_suit {""};
         string chosen_value {""};
+        tuple  <string,string> card_values; 
         string card_structure[7][7] {
             {"-","-","-","-","-","-","-"},
             {"|"," "," "," "," "," ","|"},
@@ -55,6 +62,9 @@ class CardObject {
             card_structure[1][1] = chosen_suit;
             card_structure[5][5] = chosen_suit;
             card_structure[3][3] = chosen_value;
+
+            card_values = make_tuple(chosen_value, chosen_suit);
+
             
 
         }
@@ -65,11 +75,11 @@ class CardObject {
 class Hand{
     private:
         vector<string> current_hand{"","","","","","",""};
-    
+        vector<tuple<string,string>> current_hand_values; 
     public:
         //takes in the current boardstate, and then the generated card, then returns the new board state 
         // boards state will now be the hand
-        void hand_maker(string card_output[7][7]){
+        void hand_maker(CardObject individual_card){
     
             string temp_str_concat = "";
 
@@ -80,7 +90,7 @@ class Hand{
 
                 // adds each space in each line 
                 for(int i{0}; i<7; ++i){
-                    temp_str_concat = temp_str_concat + card_output[line][i];
+                    temp_str_concat = temp_str_concat + individual_card.card_structure[line][i];
                 }
 
                 //adds in the line    
@@ -88,6 +98,7 @@ class Hand{
                 temp_str_concat = "";
                 
                 }
+            current_hand_values.push_back(individual_card.card_values);
 
         }
 
@@ -128,8 +139,6 @@ class Hand{
 //     }
     
 // }
-
-
 
 
 

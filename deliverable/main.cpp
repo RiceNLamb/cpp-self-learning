@@ -3,6 +3,7 @@
 #include<unistd.h>
 
 using namespace std;
+vector<tuple<string,string>> card_values; 
 
 
 int main(){
