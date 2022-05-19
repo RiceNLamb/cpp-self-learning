@@ -37,7 +37,7 @@ class CardObject {
         };
         string chosen_suit {""};
         string chosen_value {""};
-        tuple  <string,string> card_values; 
+        tuple<string,string> indv_card_values; 
         string card_structure[7][7] {
             {"-","-","-","-","-","-","-"},
             {"|"," "," "," "," "," ","|"},
@@ -63,7 +63,7 @@ class CardObject {
             card_structure[5][5] = chosen_suit;
             card_structure[3][3] = chosen_value;
 
-            card_values = make_tuple(chosen_value, chosen_suit);
+            indv_card_values = make_tuple(chosen_value, chosen_suit);
 
             
 
@@ -98,7 +98,7 @@ class Hand{
                 temp_str_concat = "";
                 
                 }
-            current_hand_values.push_back(individual_card.card_values);
+            current_hand_values.push_back(individual_card.indv_card_values);
 
         }
 
@@ -143,13 +143,19 @@ class Hand{
 
 
 
-bool duplicate_checker(string fcard_suit, string scard_suit, string fcard_value, string scard_value){
-    if (fcard_suit == scard_suit and fcard_value == scard_value){
-            return false;
+void duplicate_checker(vector<CardObject> checking_card_values){
+    bool all_clear{false};
+    while (all_clear != true){
+        for (int i{0}; i < checking_card_values.size(); ++ i){
+            for (int j{i+1}; i < checking_card_values.size(); ++j){
+                if (checking_card_values[i].indv_card_values == checking_card_values[j].indv_card_values){
+                    checking_card_values[j].cardCreator();
+                    i = 0;
+                    continue;
+                }
+            }
         }
-    
-    else {
-            return true;
-        }
-
+        all_clear = true;
     }
+
+}

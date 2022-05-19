@@ -3,7 +3,7 @@
 #include<unistd.h>
 
 using namespace std;
-vector<tuple<string,string>> card_values; 
+vector<CardObject> card_values; 
 
 
 int main(){
@@ -11,14 +11,11 @@ int main(){
     CardObject first_card;
     CardObject second_card;
     first_card.cardCreator();
+    card_values.push_back(first_card);
     second_card.cardCreator();
+    card_values.push_back(second_card);
 
-    bool dupe_checker {duplicate_checker(first_card.chosen_value , second_card.chosen_value, first_card.chosen_suit, second_card.chosen_suit)};
-
-    while(dupe_checker != true){
-        second_card.cardCreator();
-        dupe_checker = duplicate_checker(first_card.chosen_value , second_card.chosen_value, first_card.chosen_suit, second_card.chosen_suit);
-    }
+    duplicate_checker(card_values);
     
     
 
