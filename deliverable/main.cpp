@@ -3,11 +3,11 @@
 #include<unistd.h>
 
 using namespace std;
-vector<CardObject> card_values; 
+
 
 
 int main(){
-
+    vector<CardObject> card_values; 
     CardObject first_card;
     CardObject second_card;
     first_card.cardCreator();
@@ -17,12 +17,10 @@ int main(){
 
     duplicate_checker(card_values);
     
-    
 
     
     // vector<string> initial_cards{start_sequence(first_card.card_structure,second_card.card_structure)};
 
     //game_sequence(starting_total, initial_cards);
-
     usleep(3000000);
 }
