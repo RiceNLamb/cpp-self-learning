@@ -13,24 +13,8 @@ class CardObject {
             "C", "S", "H", "D" 
             };
         string values[13] {
-            "A", "2", "3", "4","5", "6", "7", "8", "9", "10", "J","Q","K" 
+            "2", "3", "4","5", "6", "7", "8", "9", "10", "J","Q","K","A"  
         };
-        int suits_converter(string value){
-            if (value == "J")
-                return 10;
-            else if (value == "Q")
-                return 10;
-            else if (value == "K")
-                return 10;
-            else if (value == "A")
-                return 11;
-            else{
-                int calculated_value {stoi(value)};
-                return calculated_value;
-
-            }
-            return 0;
-}
     public:
         string chosen_suit {""};
         string chosen_value {""};
@@ -109,33 +93,10 @@ class Hand{
 
     
 
-// void game_sequence(int prev_total,  vector<string> board){
-//     if (prev_total < 21){
-//         cout << "Hit or stand? ";
-//         string order{};
-//         cin >> order;
-//         if (order == "hit" or order== "Hit"){
-//             CardObject newCard;
-//             newCard.cardCreator();
-            
-//             vector<string> newboard{card_printer(board, newCard.card_structure)};
+void game_sequence(){
 
+}
 
-//             //game_sequence(new_total, newboard);
-//         }
-//         else{
-//             cout << "Your current total is: " << prev_total;
-//         }
-        
-//     }
-//     else if (prev_total == 21){
-//         cout << "Blackjack!";
-//     }
-//     else{
-//         cout << "Bust!";
-//     }
-    
-// }
 
 
 
@@ -144,7 +105,6 @@ void duplicate_checker(vector<CardObject> checking_card_values){
     bool all_clear{false};
     while (all_clear != true){
         for (int i{0}; i < checking_card_values.size(); ++ i){
-            cout << i;
             for (int j{i+1}; j < checking_card_values.size(); ++j){
                 if (checking_card_values[i].indv_card_values == checking_card_values[j].indv_card_values){
                     checking_card_values[j].cardCreator();

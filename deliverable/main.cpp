@@ -8,14 +8,19 @@ using namespace std;
 
 int main(){
     vector<CardObject> card_values; 
-    CardObject first_card;
-    CardObject second_card;
-    first_card.cardCreator();
-    card_values.push_back(first_card);
-    second_card.cardCreator();
-    card_values.push_back(second_card);
+    CardObject pfirst_card;
+    CardObject psecond_card;
+    pfirst_card.cardCreator();
+    card_values.push_back(pfirst_card);
+    psecond_card.cardCreator();
+    card_values.push_back(psecond_card);
 
     duplicate_checker(card_values);
+    
+    Hand player_hand;
+    player_hand.hand_maker(pfirst_card);
+    player_hand.hand_maker(psecond_card);
+
     
 
     
