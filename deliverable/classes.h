@@ -12,10 +12,11 @@ class CardObject {
         string suits[4] {
             "C", "S", "H", "D" 
             };
+        
+    public:
         string values[13] {
             "2", "3", "4","5", "6", "7", "8", "9", "10", "J","Q","K","A"  
         };
-    public:
         string chosen_suit {""};
         string chosen_value {""};
         tuple<string,string> indv_card_values; 
@@ -54,10 +55,11 @@ class CardObject {
 class Hand{
     private:
         vector<string> current_hand{"","","","","","",""};
-        vector<tuple<string,string>> current_hand_values; 
+
     public:
         //takes in the current boardstate, and then the generated card, then returns the new board state 
         // boards state will now be the hand
+        vector<tuple<string,string>> current_hand_values; 
         void hand_maker(CardObject individual_card){
             current_hand_values.push_back(individual_card.indv_card_values);
 

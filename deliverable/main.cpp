@@ -17,6 +17,7 @@ int main(){
 
     duplicate_checker(card_values);
     
+
     Hand player_hand;
     player_hand.hand_maker(pfirst_card);
     player_hand.hand_maker(psecond_card);
@@ -39,6 +40,8 @@ int main(){
     board_cards.hand_maker(third_flop); 
     
     board_cards.hand_printer();
+    cout << "\nYour cards \n";
+    player_hand.hand_printer();
     system("PAUSE");
     
     clear_screen();
@@ -50,6 +53,8 @@ int main(){
     board_cards.hand_maker(turn);
 
     board_cards.hand_printer();
+    cout << "\nYour cards \n";
+    player_hand.hand_printer();
 
     system("PAUSE");
 
@@ -62,12 +67,17 @@ int main(){
     duplicate_checker(card_values);
     board_cards.hand_maker(river);
     board_cards.hand_printer();
+    cout << "\nYour cards \n";
+    player_hand.hand_printer();
 
     system("PAUSE");
 
     clear_screen();
 
-    player_hand.hand_printer();
+    
+
+
+    card_analysis_process(board_cards.current_hand_values, player_hand.current_hand_values);
 
     system("PAUSE");
 }
