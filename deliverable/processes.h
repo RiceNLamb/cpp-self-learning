@@ -14,14 +14,11 @@ void card_creation_process(CardObject &card_being_added, vector<CardObject> &all
 vector<CardObject> duplicate_checker(vector<CardObject> checking_card_values){
     vector<CardObject> new_vector{checking_card_values};
 
-
-    std::cout << "Chcking started";
     bool all_clear{false};
     while (all_clear != true){
         for (int i{0}; i < new_vector.size(); ++ i){
             for (int j{i+1}; j < new_vector.size(); ++j){
                 if (new_vector[i].indv_card_values == new_vector[j].indv_card_values){
-                    std::cout << "Duplicate detected";
                     CardObject new_obj;
                     new_obj.cardCreator();
                     new_vector[j] = new_obj;
