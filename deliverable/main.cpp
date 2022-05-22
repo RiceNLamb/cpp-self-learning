@@ -15,7 +15,7 @@ int main(){
     card_creation_process(pfirst_card, card_values);
     card_creation_process(psecond_card, card_values);
 
-    duplicate_checker(card_values);
+    card_values = duplicate_checker(card_values);
     
 
     Hand player_hand;
@@ -33,30 +33,40 @@ int main(){
     card_creation_process(second_flop, card_values);
     card_creation_process(third_flop, card_values);
 
-    duplicate_checker(card_values);
+    card_values = duplicate_checker(card_values);
 
     board_cards.hand_maker(first_flop); 
     board_cards.hand_maker(second_flop);
     board_cards.hand_maker(third_flop); 
     
+    cout << "Press any key to play";
+    cin.ignore(); 
+
+    clear_screen();
+
+    cout << "Board: \n";
     board_cards.hand_printer();
     cout << "\nYour cards \n";
     player_hand.hand_printer();
-    system("PAUSE");
+    
+    cout << "Next card... \n" ;
+    cin.ignore();  
     
     clear_screen();
 
     CardObject turn;
     card_creation_process(turn, card_values);
 
-    duplicate_checker(card_values);
+    card_values = duplicate_checker(card_values);
     board_cards.hand_maker(turn);
 
+    cout << "Board: \n";
     board_cards.hand_printer();
     cout << "\nYour cards \n";
     player_hand.hand_printer();
 
-    system("PAUSE");
+    cout << "Next card...  \n";
+    cin.ignore(); 
 
 
     clear_screen();
@@ -64,20 +74,19 @@ int main(){
     CardObject river;
     card_creation_process(river, card_values);
 
-    duplicate_checker(card_values);
+    card_values = duplicate_checker(card_values);
     board_cards.hand_maker(river);
+    cout << "Board: \n";
     board_cards.hand_printer();
     cout << "\nYour cards \n";
     player_hand.hand_printer();
 
-    system("PAUSE");
+    cout << "\nResults...";
+    cin.ignore();  
 
-    clear_screen();
+    string result{card_analysis_process(board_cards.current_hand_values, player_hand.current_hand_values)};
 
+    cout << "\nThe best hand is: " << result;
     
-
-
-    card_analysis_process(board_cards.current_hand_values, player_hand.current_hand_values);
-
-    system("PAUSE");
+    cin.ignore(); 
 }

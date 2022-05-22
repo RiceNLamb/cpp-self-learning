@@ -12,11 +12,11 @@ class CardObject {
         string suits[4] {
             "C", "S", "H", "D" 
             };
-        
-    public:
         string values[13] {
             "2", "3", "4","5", "6", "7", "8", "9", "10", "J","Q","K","A"  
         };
+    public:
+        
         string chosen_suit {""};
         string chosen_value {""};
         tuple<string,string> indv_card_values; 
